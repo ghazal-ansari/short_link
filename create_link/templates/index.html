@@ -1,0 +1,90 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+    crossorigin="anonymous">
+        <style>
+        body {
+            background-image: url("{% static 'image/h.png' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: url("{% static 'image/h.png' %}");
+        }
+        .login-container {
+            max-width: 400px;
+            margin: auto;
+            padding-top: 50px;
+            
+        }
+        .login-form {
+            background-color: #b9d8f5;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+            /* height: 400px; */
+        }
+        .buttons {
+            width: 100%;
+            margin-bottom: 10px;
+            position:sticky;
+        }
+        .inputs{
+            margin-bottom: 15px;
+        }
+        .images{
+            text-align: center;
+            margin-top: 20px;
+            width: 300px;
+            height: 200px;
+        }
+        .alerts {
+            padding: 10px;
+            background-color: #b9d8f5; /* Red color */
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-12 login-form">
+                <div class="form-group text-center">
+                    {% if short_link != 'None' %}
+                        <div class="alerts">
+                        Created Link: 
+                        <h4><b>http://127.0.0.1:8000/{{ short_link }}</b></h4>
+                        </div>
+                    {% endif %}
+                </div>
+                <h2 class="text-center">Link Cutter</h2>
+                <form  action="{% url 'create' %}" method="get">
+                    <div class="form-group">
+                        <input type="text" class="form-control inputs" id="longlink" name="longlink"  placeholder="Your Long Link" value="">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control inputs" id="shortlink" name="shortlink"  placeholder="Your Short Link (Optional)" value="">
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit"   class="btn btn-outline-primary btn-block buttons" >CUT LINK</button>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="button"   class="btn btn-outline-primary btn-block buttons">
+                            <a href="{% url 'qr' %}">QR CODE</a></button>
+                    </div>
+                </form>
+           
+            </div>
+        </div>
+        
+       
+    </div>
+</body>
+</html>
