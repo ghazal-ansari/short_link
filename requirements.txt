@@ -1,1 +1,1 @@
-
+package-name @ git+<https://github.com/ghazal-ansari/short_link.git>
